@@ -100,34 +100,36 @@ adrenalineArrest: Math.round(0.01 * weight * 1000) + " mcg (" + (Math.round(0.01
                        weight < 12 ? "1.5" :
                        weight < 25 ? "2" :
                        weight < 35 ? "2.5" :
-                       weight < 50 ? "3" : "4";
+                       weight < 60 ? "3" : "4";
       const laryngoscope = age < 1 ? "Mac 1 or Miller 0" :
-                            age < 5 ? "Mac 2 or Miller 1" :
-                            age < 10 ? "Mac 2" : "Mac 3";
+                            age < 3 ? "Mac 2 or Miller 1" :
+                            age < 7 ? "Mac 2" : "Mac 3";
 
       output.innerHTML = `
         <div class="result">
-          <h2>Calculated Doses</h2>
+          <h2>Routine drugs</h2>
           <ul>
             <li><strong>Fentanyl:</strong> ${doses.fentanyl}</li>
             <li><strong>Propofol:</strong> ${doses.propofol}</li>
             <li><strong>Rocuronium (Regular):</strong> ${doses.rocuroniumRegular}</li>
             <li><strong>Rocuronium (RSI):</strong> ${doses.rocuroniumRSI}</li>
             <li><strong>Suxamethonium (IV):</strong> ${doses.suxIV}</li>
-            <li><strong>Suxamethonium (IM):</strong> ${doses.suxIM}</li>
             <li><strong>Ondansetron:</strong> ${doses.ondansetron}</li>
             <li><strong>Dexamethasone:</strong> ${doses.dexamethasone}</li>
             <li><strong>Paracetamol:</strong> ${doses.paracetamol}</li>
             <li><strong>Ibuprofen:</strong> ${doses.ibuprofen}</li>
             <li><strong>Diclofenac:</strong> ${doses.diclofenac}</li>
             <li><strong>Co-amoxiclav:</strong> ${doses.coamoxiclav}</li>
+            <li><strong>Sugammadex:</strong> ${doses.sugammadexLow} – ${doses.sugammadexHigh}</li>
+          </ul>
+
+           <h2>Emergency drugs</h2>
+           <ul>
+            <li><strong>Suxamethonium (IM):</strong> ${doses.suxIM}</li>
             <li><strong>Atropine:</strong> ${doses.atropine}</li>
             <li><strong>Adrenaline (Arrest):</strong> ${doses.adrenalineArrest}</li>
             <li><strong>Adrenaline (Anaphylaxis):</strong> ${doses.adrenalineAnaphylaxis}</li>
-            <li><strong>Sugammadex:</strong> ${doses.sugammadexLow} – ${doses.sugammadexHigh}</li>
-            <li><strong>Tidal Volume:</strong> ${doses.tidalVolume}</li>
-            <li><strong>Fluid Bolus:</strong> ${doses.fluidBolus}</li>
-          </ul>
+           </ul>
 
           <h2>Airway Equipment</h2>
           <ul>
@@ -135,6 +137,12 @@ adrenalineArrest: Math.round(0.01 * weight * 1000) + " mcg (" + (Math.round(0.01
             <li><strong>ETT Size (uncuffed):</strong> ${ettSize}</li>
             <li><strong>ETT Length at Lips:</strong> ${ettLength} cm</li>
             <li><strong>Laryngoscope:</strong> ${laryngoscope}</li>
+          </ul>
+
+           <h2>Other</h2>
+          <ul>
+            <li><strong>Tidal Volume:</strong> ${doses.tidalVolume}</li>
+            <li><strong>Fluid Bolus:</strong> ${doses.fluidBolus}</li>
           </ul>
         </div>
       `;
