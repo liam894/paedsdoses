@@ -62,27 +62,29 @@
       }
 
       const doses = {
-        fentanyl: (1 * weight).toFixed(2) + "–" + (2 * weight).toFixed(2) + " mcg",
-        propofol: (2 * weight).toFixed(2) + "–" + (3 * weight).toFixed(2) + " mg",
-        rocuroniumRegular: (0.6 * weight).toFixed(2) + "–" + (1.2 * weight).toFixed(2) + " mg",
+        fentanyl: (2 * weight).toFixed(2) + " mcg",
+        propofol: (4 * weight).toFixed(2) + " mg",
+        rocuroniumRegular: (0.6 * weight).toFixed(2) + " mg",
         rocuroniumRSI: (1.2 * weight).toFixed(2) + " mg",
-        suxIV: (1 * weight).toFixed(2) + "–" + (2 * weight).toFixed(2) + " mg",
+        suxIV: (2 * weight).toFixed(2) + " mg",
         suxIM: (4 * weight).toFixed(2) + " mg",
         ondansetron: (0.1 * weight).toFixed(2) + " mg",
         dexamethasone: (0.1 * weight).toFixed(2) + " mg",
         paracetamol: (15 * weight).toFixed(2) + " mg",
-        ibuprofen: (10 * weight).toFixed(2) + " mg",
-        atropine: (0.02 * weight).toFixed(2) + " mg",
+        ibuprofen: (5 * weight).toFixed(2) + " mg",
+        diclofenac: (1 * weight).toFixed(2) + " mg",
+        atropine: (20 * weight).toFixed(2) + " mcg",
         adrenalineArrest: (0.01 * weight).toFixed(2) + " mg",
         adrenalineAnaphylaxis: (0.01 * weight).toFixed(2) + " mg",
         sugammadexLow: (2 * weight).toFixed(2) + " mg",
         sugammadexHigh: (4 * weight).toFixed(2) + " mg",
         tidalVolume: (7 * weight).toFixed(2) + " mL",
+        coamoxiclav: (30 * weight).toFixed(2) + " mg",
         fluidBolus: (20 * weight).toFixed(2) + " mL"
       };
 
       // Airway calculations
-      const ettSize = (age / 4 + 4).toFixed(1);
+      const ettSize = (age / 4 + 3.5).toFixed(1);
       const ettLength = (age / 2 + 12).toFixed(1);
       const igelSize = weight < 5 ? "1" :
                        weight < 12 ? "1.5" :
@@ -107,6 +109,8 @@
             <li><strong>Dexamethasone:</strong> ${doses.dexamethasone}</li>
             <li><strong>Paracetamol:</strong> ${doses.paracetamol}</li>
             <li><strong>Ibuprofen:</strong> ${doses.ibuprofen}</li>
+            <li><strong>Diclofenac:</strong> ${doses.diclofenac}</li>
+            <li><strong>Co-amoxiclav:</strong> ${doses.coamoxiclav}</li>
             <li><strong>Atropine:</strong> ${doses.atropine}</li>
             <li><strong>Adrenaline (Arrest):</strong> ${doses.adrenalineArrest}</li>
             <li><strong>Adrenaline (Anaphylaxis):</strong> ${doses.adrenalineAnaphylaxis}</li>
@@ -118,7 +122,7 @@
           <h2>Airway Equipment</h2>
           <ul>
             <li><strong>iGel Size:</strong> ${igelSize}</li>
-            <li><strong>ETT Size (uncuffed):</strong> ${ettSize}</li>
+            <li><strong>ETT Size (cuffed):</strong> ${ettSize}</li>
             <li><strong>ETT Length at Lips:</strong> ${ettLength} cm</li>
             <li><strong>Laryngoscope:</strong> ${laryngoscope}</li>
           </ul>
