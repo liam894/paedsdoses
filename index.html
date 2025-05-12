@@ -61,26 +61,36 @@
         return;
       }
 
+      let adrenalineAnaphylaxisDose;
+
+      if (age > 12) {
+        adrenalineAnaphylaxisDose = "500 mcg (0.5 ml of 1:1000 IM)";
+      } else if (age >= 6 && age <= 12) {
+        adrenalineAnaphylaxisDose = "300 mcg (0.3 ml of 1:1000 IM)";
+      } else if (age < 6) {
+        adrenalineAnaphylaxisDose = "150 mcg (0.15 ml of 1:1000 IM)";
+      }
+
       const doses = {
-        fentanyl: (2 * weight).toFixed(2) + " mcg",
-        propofol: (4 * weight).toFixed(2) + " mg",
-        rocuroniumRegular: (0.6 * weight).toFixed(2) + " mg",
-        rocuroniumRSI: (1.2 * weight).toFixed(2) + " mg",
-        suxIV: (2 * weight).toFixed(2) + " mg",
-        suxIM: (4 * weight).toFixed(2) + " mg",
-        ondansetron: (0.1 * weight).toFixed(2) + " mg",
-        dexamethasone: (0.1 * weight).toFixed(2) + " mg",
-        paracetamol: (15 * weight).toFixed(2) + " mg",
-        ibuprofen: (5 * weight).toFixed(2) + " mg",
-        diclofenac: (1 * weight).toFixed(2) + " mg",
-        atropine: (20 * weight).toFixed(2) + " mcg",
-        adrenalineArrest: (0.01 * weight).toFixed(2) + " mg",
-        adrenalineAnaphylaxis: (0.01 * weight).toFixed(2) + " mg",
-        sugammadexLow: (2 * weight).toFixed(2) + " mg",
-        sugammadexHigh: (4 * weight).toFixed(2) + " mg",
-        tidalVolume: (7 * weight).toFixed(2) + " mL",
-        coamoxiclav: (30 * weight).toFixed(2) + " mg",
-        fluidBolus: (20 * weight).toFixed(2) + " mL"
+            fentanyl: Math.round(2 * weight) + " mcg",
+      propofol: Math.round(4 * weight) + " mg",
+      rocuroniumRegular: Math.round(0.6 * weight) + " mg",
+      rocuroniumRSI: Math.round(1.2 * weight) + " mg",
+      suxIV: Math.round(2 * weight) + " mg",
+      suxIM: Math.round(4 * weight) + " mg",
+      ondansetron: Math.round(0.1 * weight) + " mg",
+      dexamethasone: Math.round(0.1 * weight) + " mg",
+      paracetamol: Math.round(15 * weight) + " mg",
+      ibuprofen: Math.round(5 * weight) + " mg",
+      diclofenac: Math.round(1 * weight) + " mg",
+      atropine: Math.round(20 * weight) + " mcg",
+adrenalineArrest: Math.round(0.01 * weight * 1000) + " mcg (" + (Math.round(0.01 * weight * 1000) / 100) + " ml of 1:10,000 IV)",
+        adrenalineAnaphylaxis: adrenalineAnaphylaxisDose,
+      sugammadexLow: Math.round(2 * weight) + " mg",
+      sugammadexHigh: Math.round(4 * weight) + " mg",
+      tidalVolume: Math.round(7 * weight) + " mL",
+      coamoxiclav: Math.round(30 * weight) + " mg",
+      fluidBolus: Math.round(20 * weight) + " mL"
       };
 
       // Airway calculations
