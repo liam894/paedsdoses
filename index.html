@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paediatric Dose Calculator</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      color: #2e7d32;
+    }
+    label, input {
+      display: block;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      font-size: 1rem;
+    }
+    .result {
+      margin-top: 30px;
+    }
+    .result h2 {
+      margin-top: 20px;
+      color: #1565c0;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Paediatric Dose Calculator</h1>
+
+  <label for="weight">Weight (kg):</label>
+  <input type="number" id="weight" step="0.1" placeholder="e.g. 18">
+
+  <label for="age">Age (years):</label>
+  <input type="number" id="age" step="0.1" placeholder="e.g. 4">
+
+  <button onclick="calculate()">Calculate</button>
+
+  <div class="result" id="output"></div>
+
+  <script>
+    function calculate() {
+      const weight = parseFloat(document.getElementById('weight').value);
+      const age = parseFloat(document.getElementById('age').value);
+      const output = document.getElementById('output');
+
+      if (isNaN(weight) || isNaN(age)) {
+        output.innerHTML = "<p>Please enter valid numbers for both age and weight.</p>";
+        return;
+      }
+
+      const doses = {
+        fentanyl: (1 * weight).toFixed(2) + "–" + (2 * weight).toFixed(2) + " mcg",
+        propofol: (2 * weight).toFixed(2) + "–" + (3 * weight).toFixed(2) + " mg",
+        rocuroniumRegular: (0.6 * weight).toFixed(2) + "–" + (1.2 * weight).toFixed(2) + " mg",
+        rocuroniumRSI: (1.2 * weight).toFixed(2) + " mg",
+        suxIV: (1 * weight).toFixed(2) + "–" + (2 * weight).toFixed(2) + " mg",
+        suxIM: (4 * weight).toFixed(2) + " mg",
+        ondansetron: (0.1 * weight).toFixed(2) + " mg",
+        dexamethasone: (0.1 * weight).toFixed(2) + " mg",
+        paracetamol: (15 * weight).toFixed(2) + " mg",
+        ibuprofen: (10 * weight).toFixed(2) + " mg",
+        atropine: (0.02 * weight).toFixed(2) + " mg",
+        adrenalineArrest: (0.01 * weight).toFixed(2) + " mg",
+        adrenalineAnaphylaxis: (0.01 * weight).toFixed(2) + " mg",
+        sugammadexLow: (2 * weight).toFixed(2) + " mg",
+        sugammadexHigh: (4 * weight).toFixed(2) + " mg",
+        tidalVolume: (7 * weight).toFixed(2) + " mL",
+        fluidBolus: (20 * weight).toFixed(2) + " mL"
+      };
+
+      // Airway calculations
+      const ettSize = (age / 4 + 4).toFixed(1);
+      const ettLength = (age / 2 + 12).toFixed(1);
+      const igelSize = weight < 5 ? "1" :
+                       weight < 12 ? "1.5" :
+                       weight < 25 ? "2" :
+                       weight < 35 ? "2.5" :
+                       weight < 50 ? "3" : "4";
+      const laryngoscope = age < 1 ? "Mac 1 or Miller 0" :
+                            age < 5 ? "Mac 2 or Miller 1" :
+                            age < 10 ? "Mac 2" : "Mac 3";
+
+      output.innerHTML = `
+        <div class="result">
+          <h2>Calculated Doses</h2>
+          <ul>
+            <li><strong>Fentanyl:</strong> ${doses.fentanyl}</li>
+            <li><strong>Propofol:</strong> ${doses.propofol}</li>
+            <li><strong>Rocuronium (Regular):</strong> ${doses.rocuroniumRegular}</li>
+            <li><strong>Rocuronium (RSI):</strong> ${doses.rocuroniumRSI}</li>
+            <li><strong>Suxamethonium (IV):</strong> ${doses.suxIV}</li>
+            <li><strong>Suxamethonium (IM):</strong> ${doses.suxIM}</li>
+            <li><strong>Ondansetron:</strong> ${doses.ondansetron}</li>
+            <li><strong>Dexamethasone:</strong> ${doses.dexamethasone}</li>
+            <li><strong>Paracetamol:</strong> ${doses.paracetamol}</li>
+            <li><strong>Ibuprofen:</strong> ${doses.ibuprofen}</li>
+            <li><strong>Atropine:</strong> ${doses.atropine}</li>
+            <li><strong>Adrenaline (Arrest):</strong> ${doses.adrenalineArrest}</li>
+            <li><strong>Adrenaline (Anaphylaxis):</strong> ${doses.adrenalineAnaphylaxis}</li>
+            <li><strong>Sugammadex:</strong> ${doses.sugammadexLow} – ${doses.sugammadexHigh}</li>
+            <li><strong>Tidal Volume:</strong> ${doses.tidalVolume}</li>
+            <li><strong>Fluid Bolus:</strong> ${doses.fluidBolus}</li>
+          </ul>
+
+          <h2>Airway Equipment</h2>
+          <ul>
+            <li><strong>iGel Size:</strong> ${igelSize}</li>
+            <li><strong>ETT Size (uncuffed):</strong> ${ettSize}</li>
+            <li><strong>ETT Length at Lips:</strong> ${ettLength} cm</li>
+            <li><strong>Laryngoscope:</strong> ${laryngoscope}</li>
+          </ul>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
