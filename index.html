@@ -90,12 +90,14 @@ adrenalineArrest: Math.round(0.01 * weight * 1000) + " mcg (" + (Math.round(0.01
       sugammadexHigh: Math.round(4 * weight) + " mg",
       tidalVolume: Math.round(7 * weight) + " mL",
       coamoxiclav: Math.round(30 * weight) + " mg",
-      fluidBolus: Math.round(20 * weight) + " mL"
+      fluidBolus: Math.round(20 * weight) + " mL",
+        glucose: Math.round(2 * weight) + " mL of 10% glucose"
       };
 
       // Airway calculations
       const ettSize = (age / 4 + 3.5).toFixed(1);
       const ettLength = (age / 2 + 12).toFixed(1);
+      const ettNasal = (age / 2 + 15).toFixed(1);
       const igelSize = weight < 5 ? "1" :
                        weight < 12 ? "1.5" :
                        weight < 25 ? "2" :
@@ -129,6 +131,7 @@ adrenalineArrest: Math.round(0.01 * weight * 1000) + " mcg (" + (Math.round(0.01
             <li><strong>Atropine:</strong> ${doses.atropine}</li>
             <li><strong>Adrenaline (Arrest):</strong> ${doses.adrenalineArrest}</li>
             <li><strong>Adrenaline (Anaphylaxis):</strong> ${doses.adrenalineAnaphylaxis}</li>
+            <li><strong>Glucose:</strong> ${doses.glucose}</li>
            </ul>
 
           <h2>Airway Equipment</h2>
@@ -136,6 +139,7 @@ adrenalineArrest: Math.round(0.01 * weight * 1000) + " mcg (" + (Math.round(0.01
             <li><strong>iGel Size:</strong> ${igelSize}</li>
             <li><strong>ETT Size (uncuffed):</strong> ${ettSize}</li>
             <li><strong>ETT Length at Lips:</strong> ${ettLength} cm</li>
+            <li><strong>ETT Length at Nose:</strong> ${ettNasal} cm</li>
             <li><strong>Laryngoscope:</strong> ${laryngoscope}</li>
           </ul>
 
