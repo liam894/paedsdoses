@@ -61,6 +61,11 @@
         return;
       }
 
+        if (age > 17 || weight > 50) {
+    output.innerHTML = "<p>Age must be 17 or under, and weight must be 50 kg or under.</p>";
+    return;
+  }
+
       let adrenalineAnaphylaxisDose;
 
       if (age > 12) {
