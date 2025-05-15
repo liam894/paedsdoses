@@ -94,7 +94,7 @@ adrenalineArrest: Math.round(0.01 * weight * 1000) + " mcg (" + (Math.round(0.01
       sugammadexLow: Math.round(2 * weight) + " mg",
       sugammadexHigh: Math.round(4 * weight) + " mg",
       tidalVolume: Math.round(7 * weight) + " mL",
-      coamoxiclav: Math.round(30 * weight) + " mg",
+      coamoxiclav: Math.round(Math.min(30 * weight, 1200)) + " mg",
       fluidBolus: Math.round(20 * weight) + " mL",
         glucose: Math.round(2 * weight) + " mL of 10% glucose",
         lorazepam: Math.round(0.1 * weight) + " mg",
