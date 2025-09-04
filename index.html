@@ -98,7 +98,8 @@ adrenalineArrest: Math.round(0.01 * weight * 1000) + " mcg (" + (Math.round(0.01
       fluidBolus: Math.round(20 * weight) + " mL (" + Math.round(10*weight) + " in trauma)",
         glucose: Math.round(2 * weight) + " mL of 10% glucose",
         lorazepam: Math.round(0.1 * weight) + " mg",
-        energy: Math.round(4* weight) + " joules"
+        energy: Math.round(4* weight) + " joules",
+        amiodarone: Math.round(5*weight) + " mcg (after 3rd and 5th shocks)"
       };
 
       // Airway calculations
@@ -140,6 +141,7 @@ adrenalineArrest: Math.round(0.01 * weight * 1000) + " mcg (" + (Math.round(0.01
             <li><strong>Adrenaline (Anaphylaxis):</strong> ${doses.adrenalineAnaphylaxis}</li>
             <li><strong>Glucose:</strong> ${doses.glucose}</li>
             <li><strong>Lorazepam:</strong> ${doses.lorazepam}</li>
+            <li><strong>Amiodarone:</strong> ${doses.amiodarone}</li>
            </ul>
 
           <h2>Airway Equipment</h2>
